@@ -10,9 +10,9 @@
     "responsive",
     "table"
   ],
+  "homepage": "https://github.com/mrm007/opencode-responsive-tables",
   "license": "MIT",
   "author": "mrm007",
-  "homepage": "https://github.com/mrm007/opencode-responsive-tables",
   "repository": {
     "type": "git",
     "url": "git@github.com:mrm007/opencode-responsive-tables.git"
@@ -25,6 +25,10 @@
   "type": "module",
   "exports": {
     ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/bun": "^1.3.9",

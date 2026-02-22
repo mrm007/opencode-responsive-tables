@@ -31,11 +31,7 @@ function getMaxWidth(): number {
 
 function isTableRow(line: string): boolean {
   const trimmed = line.trim();
-  return (
-    trimmed.startsWith("|") &&
-    trimmed.endsWith("|") &&
-    trimmed.split("|").length > 2
-  );
+  return trimmed.startsWith("|") && trimmed.endsWith("|") && trimmed.split("|").length > 2;
 }
 
 function isSeparatorRow(line: string): boolean {

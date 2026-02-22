@@ -21,7 +21,7 @@ Becomes:
 **City**: New York
 **Country**: USA
 **Email**: alice@example.com
-────────────────────────
+────────────────────────────
 **Name**: Bob
 **Age**: 25
 **City**: London
@@ -46,7 +46,6 @@ Tables that fit are passed through unchanged. Tables inside code fences are neve
 3. If the table fits the terminal → pass through as-is
 4. If the table overflows → reformat as stacked key-value cards with `─` separators
 5. No terminal width (e.g. OpenCode web) → all tables pass through
-
 
 ## Pairs well with
 
