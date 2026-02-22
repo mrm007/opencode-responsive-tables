@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build
+dist/
+out/
+build/
+
+# Bun
+bun.lockb
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.codenomad/
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,141 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`table fits terminal → passthrough small 2-column table 1`] = `
+"| Name | Age |
+| --- | --- |
+| Alice | 30 |
+| Bob | 25 |"
+`;
+
+exports[`table fits terminal → passthrough header-only table (no data rows) always passes through 1`] = `
+"| Column A | Column B |
+| --- | --- |"
+`;
+
+exports[`table exceeds terminal → stacked cards wide table becomes stacked 1`] = `
+"**Name**: Alice
+**Age**: 30
+**City**: New York
+**Country**: USA
+**Email**: alice@example.com
+────────────────────────
+**Name**: Bob
+**Age**: 25
+**City**: London
+**Country**: UK
+**Email**: bob@example.com"
+`;
+
+exports[`table exceeds terminal → stacked cards single data row — no separator between cards 1`] = `
+"**Name**: Alice
+**Age**: 30
+**City**: New York
+**Country**: USA
+**Email**: alice@example.com"
+`;
+
+exports[`table exceeds terminal → stacked cards three data rows — separators between each card 1`] = `
+"**Name**: Alice
+**Age**: 30
+**City**: New York
+**Country**: USA
+**Email**: alice@example.com
+────────────────────────
+**Name**: Bob
+**Age**: 25
+**City**: London
+**Country**: UK
+**Email**: bob@example.com
+────────────────────────
+**Name**: Carol
+**Age**: 35
+**City**: Paris
+**Country**: France
+**Email**: carol@example.com"
+`;
+
+exports[`code fence protection table before code fence is processed, table inside is not 1`] = `
+"**Name**: Alice
+**Age**: 30
+**City**: NYC
+**Country**: USA
+**Email**: a@b.com
+
+\`\`\`
+| Name | Age |
+| --- | --- |
+| Bob | 25 |
+\`\`\`"
+`;
+
+exports[`mixed content text around a stacked table 1`] = `
+"Here is a table:
+
+**Name**: Alice
+**Age**: 30
+**City**: New York
+**Country**: USA
+**Email**: alice@example.com
+
+End of document."
+`;
+
+exports[`mixed content multiple tables — one fits, one stacks 1`] = `
+"| A | B |
+| - | - |
+| 1 | 2 |
+
+Text between tables.
+
+**Name**: Alice
+**Age**: 30
+**City**: New York
+**Country**: USA
+**Email**: alice@example.com"
+`;
+
+exports[`markdown in cells bold text 1`] = `
+"| Feature | Status |
+| --- | --- |
+| **Auth** | Done |
+| **API** | WIP |"
+`;
+
+exports[`markdown in cells inline code 1`] = `
+"| Command | Description |
+| --- | --- |
+| \`git status\` | Show working tree |
+| \`git diff\` | Show changes |"
+`;
+
+exports[`markdown in cells links 1`] = `
+"| Project | Link |
+| --- | --- |
+| React | [repo](https://github.com/facebook/react) |
+| Vue | [repo](https://github.com/vuejs/vue) |"
+`;
+
+exports[`edge cases no terminal width (e.g. OpenCode web) → all tables pass through 1`] = `
+"| A really long header column | Another really long header | And yet another one |
+| --- | --- | --- |
+| lots of content here | more content over here | even more content |"
+`;
+
+exports[`edge cases table at very end of text (no trailing newline) 1`] = `
+"Some intro text.
+
+**Name**: Alice
+**Age**: 30
+**City**: NYC
+**Country**: USA
+**Email**: a@b.com"
+`;
+
+exports[`edge cases consecutive tables with no gap 1`] = `
+"| A | B |
+| - | - |
+| 1 | 2 |
+| X | Y | Z |
+| - | - | - |
+| 3 | 4 | 5 |"
+`;
