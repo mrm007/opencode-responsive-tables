@@ -1,6 +1,8 @@
 import type { Plugin, Hooks } from "@opencode-ai/plugin";
 
-// ── Plugin Entry ───────────────────────────────────────────────────
+const stringWidth = Bun.stringWidth;
+
+// ── Plugin Entry ──────────────────────────────────────────────────
 
 export const ResponsiveTables: Plugin = async () => {
   return {
@@ -17,7 +19,7 @@ export const ResponsiveTables: Plugin = async () => {
   } as Hooks;
 };
 
-// ── Width ──────────────────────────────────────────────────────────
+// ── Width ─────────────────────────────────────────────────────────
 
 function getMaxWidth(): number {
   const termWidth = process.stdout.columns;
@@ -29,7 +31,11 @@ function getMaxWidth(): number {
 
 function isTableRow(line: string): boolean {
   const trimmed = line.trim();
-  return trimmed.startsWith("|") && trimmed.endsWith("|") && trimmed.split("|").length > 2;
+  return (
+    trimmed.startsWith("|") &&
+    trimmed.endsWith("|") &&
+    trimmed.split("|").length > 2
+  );
 }
 
 function isSeparatorRow(line: string): boolean {
@@ -57,7 +63,7 @@ function isCodeFenceLine(line: string): boolean {
   return /^\s*(`{3,}|~{3,})/.test(line);
 }
 
-// ── Table Parsing ──────────────────────────────────────────────────
+// ── Table Parsing ─────────────────────────────────────────────────
 
 interface ParsedTable {
   headers: string[];
@@ -89,7 +95,7 @@ function parseTable(lines: string[]): ParsedTable {
   return { headers, dataRows };
 }
 
-// ── Width Measurement (from @franlol/opencode-md-table-formatter) ──
+// ── Width Measurement (from @franlol/opencode-md-table-formatter)
 
 const widthCache = new Map<string, number>();
 let cacheOps = 0;
@@ -128,7 +134,7 @@ function measureStringWidth(text: string): number {
     return codeBlocks[parseInt(index)];
   });
 
-  return Bun.stringWidth(visual);
+  return stringWidth(visual);
 }
 
 function getTableDisplayWidth(lines: string[]): number {
@@ -139,7 +145,7 @@ function getTableDisplayWidth(lines: string[]): number {
   return max;
 }
 
-// ── Stacked Cards ──────────────────────────────────────────────────
+// ── Stacked Cards ─────────────────────────────────────────────────
 
 function formatStacked(table: ParsedTable, maxWidth: number): string[] {
   const { headers, dataRows } = table;
@@ -173,7 +179,7 @@ function formatStacked(table: ParsedTable, maxWidth: number): string[] {
   return result;
 }
 
-// ── Orchestrator ───────────────────────────────────────────────────
+// ── Orchestrator ──────────────────────────────────────────────────
 
 export function formatResponsiveTables(text: string): string {
   const maxWidth = getMaxWidth();
@@ -220,7 +226,7 @@ export function formatResponsiveTables(text: string): string {
   return result.join("\n");
 }
 
-// ── Cache ──────────────────────────────────────────────────────────
+// ── Cache ─────────────────────────────────────────────────────────
 
 function incrementCacheOps() {
   cacheOps++;
