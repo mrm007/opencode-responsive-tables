@@ -178,6 +178,7 @@ function formatStacked(table: ParsedTable, maxWidth: number): string[] {
 // ── Orchestrator ──────────────────────────────────────────────────
 
 export function formatResponsiveTables(text: string): string {
+  if (typeof text !== "string") return "";
   const maxWidth = getMaxWidth();
   const lines = text.split("\n");
   const result: string[] = [];
