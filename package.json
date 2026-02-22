@@ -15,7 +15,7 @@
   "author": "mrm007",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mrm007/opencode-responsive-tables.git"
+    "url": "git+ssh://git@github.com/mrm007/opencode-responsive-tables.git"
   },
   "files": [
     "index.ts",
