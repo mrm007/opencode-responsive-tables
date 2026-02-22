@@ -1,6 +1,6 @@
 {
   "name": "opencode-responsive-tables",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Responsive Markdown table formatter for OpenCode — aligned tables when they fit, stacked cards when they don't",
   "keywords": [
     "formatter",
